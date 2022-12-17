@@ -1,0 +1,12 @@
+version: "3"
+services:
+  mongo:
+    image: mongo:3.4.13-jessie
+    ports:
+      - "27017:27017"
+    # networks:
+    #   - pokemon_network
+
+# networks:
+#   pokemon_network:
+#     driver: bridge

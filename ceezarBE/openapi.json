@@ -1,0 +1,410 @@
+{
+  "openapi": "3.0.0",
+  "paths": {
+    "/": {
+      "get": {
+        "operationId": "AppController_getHello",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/pokemon": {
+      "post": {
+        "operationId": "PokemonController_create",
+        "parameters": [],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreatePokemonDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      },
+      "get": {
+        "operationId": "PokemonController_findAll",
+        "parameters": [
+          {
+            "name": "page",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "limit",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PokemonEntity"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/pokemon/damage": {
+      "get": {
+        "operationId": "PokemonController_damage",
+        "parameters": [
+          {
+            "name": "attackerId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          },
+          {
+            "name": "defenderId",
+            "required": true,
+            "in": "query",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "number"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    },
+    "/pokemon/{id}": {
+      "get": {
+        "operationId": "PokemonController_findOne",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PokemonEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      },
+      "patch": {
+        "operationId": "PokemonController_update",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UpdatePokemonDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PokemonEntity"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      },
+      "delete": {
+        "operationId": "PokemonController_remove",
+        "parameters": [
+          {
+            "name": "id",
+            "required": true,
+            "in": "path",
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": ""
+          }
+        },
+        "security": [
+          {
+            "basic": []
+          }
+        ]
+      }
+    }
+  },
+  "info": {
+    "title": "Pokemon Ceezr",
+    "description": "The Ceezr pokemon API description",
+    "version": "1.0",
+    "contact": {}
+  },
+  "tags": [],
+  "servers": [],
+  "components": {
+    "securitySchemes": {
+      "basic": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    },
+    "schemas": {
+      "CreatePokemonDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type_1": {
+            "type": "string"
+          },
+          "type_2": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "hP": {
+            "type": "number"
+          },
+          "attack": {
+            "type": "number"
+          },
+          "defense": {
+            "type": "number"
+          },
+          "sp_Atk": {
+            "type": "number"
+          },
+          "sp_Def": {
+            "type": "number"
+          },
+          "speed": {
+            "type": "number"
+          },
+          "generation": {
+            "type": "number"
+          },
+          "legendary": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "type_1",
+          "type_2",
+          "total",
+          "hP",
+          "attack",
+          "defense",
+          "sp_Atk",
+          "sp_Def",
+          "speed",
+          "generation",
+          "legendary"
+        ]
+      },
+      "PokemonEntity": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "number"
+          },
+          "name": {
+            "type": "string"
+          },
+          "type_1": {
+            "type": "string"
+          },
+          "type_2": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "hP": {
+            "type": "number"
+          },
+          "attack": {
+            "type": "number"
+          },
+          "defense": {
+            "type": "number"
+          },
+          "sp_Atk": {
+            "type": "number"
+          },
+          "sp_Def": {
+            "type": "number"
+          },
+          "speed": {
+            "type": "number"
+          },
+          "generation": {
+            "type": "number"
+          },
+          "legendary": {
+            "type": "boolean"
+          },
+          "created_at": {
+            "format": "date-time",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "type_1",
+          "type_2",
+          "total",
+          "hP",
+          "attack",
+          "defense",
+          "sp_Atk",
+          "sp_Def",
+          "speed",
+          "generation",
+          "legendary",
+          "created_at"
+        ]
+      },
+      "UpdatePokemonDto": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type_1": {
+            "type": "string"
+          },
+          "type_2": {
+            "type": "string"
+          },
+          "total": {
+            "type": "number"
+          },
+          "hP": {
+            "type": "number"
+          },
+          "attack": {
+            "type": "number"
+          },
+          "defense": {
+            "type": "number"
+          },
+          "sp_Atk": {
+            "type": "number"
+          },
+          "sp_Def": {
+            "type": "number"
+          },
+          "speed": {
+            "type": "number"
+          },
+          "generation": {
+            "type": "number"
+          },
+          "legendary": {
+            "type": "boolean"
+          }
+        }
+      }
+    }
+  }
+}
