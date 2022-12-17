@@ -21,7 +21,7 @@ export class PokemonController {
   async damage(@Query('attackerId') attackerId: number, @Query('defenderId') defenderId: number):Promise<number> {
     return this.pokemonService.getDamage(attackerId, defenderId);
   }
-
+ 
   @Get()
   async findAll(@Query('page') page: number, @Query('limit') limit: number):Promise<PokemonEntity[]> {
     return this.pokemonService.findAll(page, limit);
