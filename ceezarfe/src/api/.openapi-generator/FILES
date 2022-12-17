@@ -1,0 +1,17 @@
+.babelrc
+.gitignore
+.travis.yml
+README.md
+docs/CreatePokemonDto.md
+docs/DefaultApi.md
+docs/PokemonEntity.md
+docs/UpdatePokemonDto.md
+git_push.sh
+mocha.opts
+package.json
+src/ApiClient.js
+src/api/DefaultApi.js
+src/index.js
+src/model/CreatePokemonDto.js
+src/model/PokemonEntity.js
+src/model/UpdatePokemonDto.js
